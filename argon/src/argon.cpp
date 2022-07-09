@@ -1,7 +1,17 @@
+/******************************************************/
+//       THIS IS A GENERATED FILE - DO NOT EDIT       //
+/******************************************************/
+
+#include "Particle.h"
+#line 1 "c:/Users/Laurent/Documents/UdeS/S6/APP5/repo/argon/src/argon.ino"
 #include "lib/beacon/BeaconScanner.h"
 
 // SYSTEM_THREAD(ENABLED);
 
+void onCallback(Beacon& beacon, callback_type type);
+void setup();
+void loop();
+#line 5 "c:/Users/Laurent/Documents/UdeS/S6/APP5/repo/argon/src/argon.ino"
 void onCallback(Beacon& beacon, callback_type type)
 {
   if(NEW == type)
