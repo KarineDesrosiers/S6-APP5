@@ -10,7 +10,7 @@ export class EventsComponent implements OnInit {
     events: Event[] = [];
 
     constructor(private eventsService: EventsService) { }
-
+    
     ngOnInit(): void {
         this.getEvents();
     }

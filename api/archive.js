@@ -57,7 +57,7 @@ app.get('/api/events', function(req, res) {
         var parsedData = [];
         for (let i = 0; i < rows.length-1; i++) {
             const element = rows[i].split(' ');
-            parsedData[i] = {name: element[0], address: element[1]};
+            parsedData[i] = {action: element[0], address: element[1]};
         }
 
         res.json(parsedData);

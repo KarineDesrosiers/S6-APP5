@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,7 +10,7 @@ export class LedService {
 
     constructor(private http: HttpClient) {}
 
-    postLedState(ledState: boolean) {
-        return this.http.post(this.ledUrl, ledState);
+    getLedState(): Observable<boolean> {
+        return this.http.get<boolean>(this.ledUrl);
     }
 }

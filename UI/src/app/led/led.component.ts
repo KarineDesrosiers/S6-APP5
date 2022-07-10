@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Component } from '@angular/core';
 import { LedService } from './led.service';
 
 @Component({
@@ -7,25 +6,16 @@ import { LedService } from './led.service';
   templateUrl: './led.component.html',
   styleUrls: ['./led.component.scss']
 })
-export class LedComponent implements OnInit {
-    ledState: boolean = false;
+export class LedComponent {
+    ledState: string = '';
 
     constructor(private ledService: LedService) { }
 
-    ngOnInit(): void {
-        
-    }
-
-    postLedState(ledState: boolean): void {
-        this.ledService.postLedState(ledState).subscribe((response) => {
-            console.log('Response postLedState(): ', response);
+    getLedState(): void {
+        this.ledService.getLedState().subscribe((response) => {
+            this.ledState = response ? 'ON' : 'OFF';
         }, (error) => {
-            console.log('Error postLedState(): ', error);
+            console.log('Error getEvents(): ', error);
         });
-    }
-
-    toggle(event: MatSlideToggleChange) {
-        this.ledState = event.checked;
-        this.postLedState(this.ledState);
     }
 }
