@@ -7,23 +7,16 @@ PinState ledState = LOW;
 
 void onCallback(Beacon& beacon, callback_type type)
 {
-  if(NEW == type)
-  {
-    Serial.printlnf("Address: %s. Type: %s", beacon.getAddress().toString().c_str(), "Entered");
-    Particle.publish("Entered", beacon.getAddress().toString().c_str());
-  }
+  String address = beacon.getAddress().toString().c_str();
+  String action = (NEW == type) ? "Entered" : "Left";
 
-  else
-  {
-    Serial.printlnf("Address: %s. Type: %s", beacon.getAddress().toString().c_str(), "Left");
-    Particle.publish("Left", beacon.getAddress().toString().c_str());
-  }
+  Serial.printlnf("Address: %s. Action: %s", address.c_str(), action.c_str());
+  Particle.publish(action, address);
 }
 
 PinState toggleLED(String command)
 {
-  if(LOW == ledState) ledState = HIGH;
-  else ledState = LOW;
+  ledState = (LOW == ledState) ? HIGH : LOW;
 
   digitalWrite(ledPin, ledState);
 
