@@ -4,15 +4,21 @@ import { Event } from './event';
 
 @Component({
   selector: 'app-events',
-  templateUrl: './events.component.html'
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
+    interval: any;
     events: Event[] = [];
+    displayedColumns: string[] = ['action', 'address'];
 
     constructor(private eventsService: EventsService) { }
     
     ngOnInit(): void {
         this.getEvents();
+        this.interval = setInterval(() => { 
+            this.getEvents(); 
+        }, 1000);
     }
 
     getEvents(): void {

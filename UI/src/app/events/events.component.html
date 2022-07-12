@@ -1,7 +1,20 @@
-<h2>Events</h2>
+<mat-toolbar class="mat-elevation-z8">
+    <span>List of events</span>
+</mat-toolbar>
 
-<ul>
-    <li *ngFor="let event of events">
-        <span>{{event.action}} {{event.address}}</span>
-    </li>
-</ul>
+<section class="container mat-elevation-z8" tabindex="0">
+    <table mat-table [dataSource]="events.reverse()">
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let event">{{event.action}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let event">{{event.address}}</td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</section>

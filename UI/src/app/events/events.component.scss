@@ -1,0 +1,31 @@
+.container {
+    height: 400px;
+    width: 600px;
+    overflow: auto;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: white;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-header-cell {
+    font-size: 15px;
+}
+
+mat-toolbar {
+    color: white;
+    background-color: #1f717f;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+tr.mat-header-row {
+    background-color: #fcfcfc;
+}
+
+th.mat-header-cell {
+    color: #5a5a5a;
+}

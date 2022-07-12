@@ -1,2 +1,5 @@
-<button (click)="getLedState()">Toggle</button>
-{{ ledState }}
+<div class="container">
+    <button mat-raised-button (click)="getLedState()">Toggle LED</button>
+    <br><br>
+    <div class="state">{{ ledState }}</div>
+</div>
